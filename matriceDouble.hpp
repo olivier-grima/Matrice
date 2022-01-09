@@ -35,11 +35,11 @@ class matriceDouble:public Matrice <double>
         }
 
 
-        double get(int i, int j)
+        virtual double get(const int i, const int j) const
         {
             return this->mat[i*this->nbC+j+1];
         }     
-        void set(double x,int i, int j)
+        virtual void set(double x,int i, int j)
         {
             this->mat[i*this->nbC+j+1]=x;
         }
