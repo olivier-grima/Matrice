@@ -12,14 +12,49 @@ int main(){
 
     cout << "Hello World" << endl;
     cout << "execution main" << endl;
-    matriceDouble mm(3,3);
-   
-    //double x = mm.get(2,2);
-    //cout<<x<<endl;
-    cout<<mm<<endl;
-    cout<<"set a 5.3"<<endl;
-    mm.set(5.3,0,2);
-     cout<<mm<<endl;
+     
+    matriceDouble m1(2,3,3);
+    matriceDouble m2(2,3,2);
+    matriceDouble m4(3,2,6);
+    
+    
+    try 
+    {
+        Matrice<double> *m3 = m1.subMat(0,1,0,1);
+        cout<<"somme m1 m2"<<endl;
+        cout<<"m1"<<endl;
+        cout<<m1<<endl;
+        cout<<"m2"<<endl;
+        cout<<m2<<endl;
+        cout<<"m3"<<endl;
+        cout<<*m3<<endl;
+        cout<<"m4"<<endl;
+        cout<<m4<<endl;
+
+
+        cout<<"m1+m2"<<endl;
+        cout<<m1+m2<<endl;
+
+        
+        
+        cout<<"m1*m4"<<endl;
+        cout<<m1*m4<<endl;
+        
+
+        cout<<"sub de m1 (m3)"<<endl;
+        cout<<*m3<<endl;
+
+
+
+
+     
+    }
+    catch(const IndexInvalide& e){cerr<<e.what()<<endl;}
+    catch(const TailleInvalide& e){cerr<<e.what()<<endl;}
+  
+
+    
+    
+   cout<<"FIN"<<endl;
     return EXIT_SUCCESS;
 }
-//PB fonction set 
