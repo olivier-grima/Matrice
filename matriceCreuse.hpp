@@ -3,7 +3,7 @@
 #include "matriceDouble.hpp"
 #include "exception_mat.hpp"
 
-/*
+class matriceDouble;
 class matriceCreuse : public Matrice<double>
 {
     protected :
@@ -25,7 +25,9 @@ class matriceCreuse : public Matrice<double>
             this->ancienNbC=mc.ancienNbC;
             this->ancienNbL=mc.ancienNbL;
         }
-        ~matriceCreuse(){};
+        virtual ~matriceCreuse(){
+            delete this->mc;
+        };
         //accesseurs
         int getAncienL()
         {
@@ -39,7 +41,7 @@ class matriceCreuse : public Matrice<double>
 
         int getAncienC()
         {
-            return this->ancienNbL;
+            return this->ancienNbC;
         }
         
         void setAncienC(int i)
@@ -66,15 +68,14 @@ class matriceCreuse : public Matrice<double>
     
         }
 
-        virtual Matrice<double>* subMat(int i1,int i2, int j1,int j2)const;
-        virtual Matrice<double>* SomMat(const Matrice<double> &m1)const;
-        virtual Matrice<double>* MultMat(const Matrice<double> &m1)const; 
+        virtual Matrice<double>* subMat(int i1,int i2, int j1,int j2)const override;
+        virtual Matrice<double>* SomMat(const Matrice<double> &m1)const override;
+        virtual Matrice<double>* MultMat(const Matrice<double> &m1)const override; 
 
         virtual string toString() const;
-        virtual Matrice<double>* MDtoMC()const;
+        virtual Matrice<double>* MDtoMC()const override;
+        virtual int estCreuse()const override;
 
-        virtual Matrice<double> &operator +(const Matrice<double> &m);
-        virtual Matrice<double> &operator *(const Matrice<double> &m);
        /*
 
         
@@ -104,12 +105,7 @@ class matriceCreuse : public Matrice<double>
 
         }
 
-        virtual Matrice<double>* MDtoMC()const override
-        {
-           matriceCreuse *m = new matriceCreuse(1);
-            return m;
-        }
-
+        
         virtual void MCtoMD()
         {
            
@@ -118,6 +114,6 @@ class matriceCreuse : public Matrice<double>
             for (int j = 0; j <this->getC(); j++)
                 md.set(this->get(0,j),this->get(1,j),this->get(2,j)); //on restaure les valeurs aux coordonées i,j contenu dans MC
             
-        }
+        }*/
     
-};*/
+};

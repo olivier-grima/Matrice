@@ -1,6 +1,5 @@
-
 #include "matriceDouble.hpp"
-//#include "matriceCreuse.hpp"
+#include "matriceCreuse.hpp"
 
 #include <sstream>
 
@@ -73,12 +72,12 @@ Matrice<double>* matriceDouble::subMat(int i1,int i2, int j1,int j2)const
 Matrice<double>* matriceDouble::SomMat(const Matrice<double> &m1)const 
 {
 
-    if(this->nbC!=m1.getC() || this->nbL!=m1.getL())
+    if(this->nbC!=nbC || this->nbL!=nbL)
         throw TailleInvalide("Les 2 matrices n'ont pas la même taille, somme impossible");
-    matriceDouble *m = new matriceDouble(m1.getL(),m1.getC());
-    for(int i=0;i<m1.getL();i++)
+    matriceDouble *m = new matriceDouble(nbL,nbC);
+    for(int i=0;i<nbL;i++)
     {
-        for(int j=0;j<m1.getC();j++)
+        for(int j=0;j<nbC;j++)
         {
             m->set(this->get(i,j)+m1.get(i,j),i,j);
         }
@@ -88,12 +87,12 @@ Matrice<double>* matriceDouble::SomMat(const Matrice<double> &m1)const
 
 Matrice<double>* matriceDouble::MultMat(const Matrice<double> &m1)const 
 {
-    if(this->nbC!=m1.getL())
+    if(this->nbC!=nbL)
         throw TailleInvalide("Les 2 matrices ne sont pas compatible, multiplication impossible");
-    matriceDouble *m = new matriceDouble(this->nbL,m1.getC(),0);
+    matriceDouble *m = new matriceDouble(this->nbL,nbC,0);
     for(int i=0;i<this->nbL;i++)
     {
-        for(int j=0;j<m1.getC();j++)
+        for(int j=0;j<nbC;j++)
         {
             for(int c=0;c<this->nbC;c++ )
             {
@@ -105,18 +104,18 @@ Matrice<double>* matriceDouble::MultMat(const Matrice<double> &m1)const
     
     return m;
 }
-/*Matrice<double>* matriceDouble::MDtoMC()const 
+Matrice<double>* matriceDouble::MDtoMC()const 
 {
-        if(this->estCreuse())
+        if(!this->estCreuse())
             throw InvalideCreuse ("Votre matrice n'est pas \"creuse\", conversion impossible !");
     matriceCreuse *mc = new matriceCreuse(this->nbElem);
     
     int cptj=0;
-    mc->setAncienL(this->getL());
-    mc->setAncienC(this->getC());
-    for(int i=0;i<this->getL();i++)
+    mc->setAncienL(this->nbL);
+    mc->setAncienC(this->nbC);
+    for(int i=0;i<this->nbL;i++)
     {
-        for(int j=0;j<this->getC();j++)
+        for(int j=0;j<this->nbC;j++)
         {
             if(this->get(i,j)!=0)
             {
@@ -129,16 +128,16 @@ Matrice<double>* matriceDouble::MultMat(const Matrice<double> &m1)const
         }
     }
     return mc;
-}*/
+}
 
 int matriceDouble::estCreuse()const 
 {
     
     double cpt=0;
 
-    for(int i=0;i<this->getL();i++)
+    for(int i=0;i<this->nbL;i++)
     {
-        for (int j = 0; j < this->getC(); j++)
+        for (int j = 0; j < this->nbC; j++)
         {
             if(this->get(i,j)==0)
                 cpt++;
@@ -146,7 +145,7 @@ int matriceDouble::estCreuse()const
         
     }
     
-    if((cpt/this->getNbElem())*100>=90)
+    if((cpt/this->nbElem)*100>=90)
         return 1;//la matrice est creuse
     
     return 0;//la matrice n'est pas creuse

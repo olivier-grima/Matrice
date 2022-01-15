@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//class matriceCreuse;
+class matriceCreuse;
 
 class matriceDouble:public Matrice <double>
 {
@@ -36,35 +36,36 @@ class matriceDouble:public Matrice <double>
 
         }
      
-        ~matriceDouble()
+        virtual ~matriceDouble()
         {
             delete this->mat;
         }
 
+        virtual double get(const int i, const int j)const override;
+        
+        virtual void set(const double &x,const int i, const int j) override;
 
+        virtual string toString() const ;
+        
+        virtual Matrice<double>* subMat(int i1,int i2, int j1,int j2)const override;
+        
+        virtual Matrice<double>* SomMat(const Matrice<double> &m1)const override;
+
+        virtual Matrice<double>* MultMat(const Matrice<double> &m1)const override;
+
+        virtual Matrice<double>* MDtoMC()const override;
+        
+       
+        virtual int estCreuse()const override;
 
         /*friend Matrice<double> operator =(const Matrice<double> &m)
         {
             this->nbElem=m.nbElem;
             this->nbC=m.nbC;
             this->nbL=m.nbL;
-            return *this->Matrice(m);
+            return this->Matrice(m);
         }*/
 
-        virtual double get(const int i, const int j)const override;
-        
-        virtual void set(const double &x,const int i, const int j) override;
-        string toString() const ;
-        
-        virtual Matrice<double>* subMat(int i1,int i2, int j1,int j2)const override;
-        
-        Matrice<double>* SomMat(const Matrice<double> &m1)const override;
-
-        Matrice<double>* MultMat(const Matrice<double> &m1)const override;
-
-       // Matrice<double>* MDtoMC()const override;
-        
-       
-        int estCreuse()const;
+      
 
 };

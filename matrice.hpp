@@ -24,25 +24,13 @@ class Matrice{
         virtual ~Matrice(){};
         virtual T get(const int i, const int j)const=0;
         virtual void set(const T &x, int i, int j)=0;
-        //accesseurs car nbElem, nbC, nbL sont protégés
-        int getC()const
-        {
-            return this->nbC;
-        }
-        int getL()const
-        {
-            return this->nbL;
-
-        }
-        int getNbElem()const
-        {
-            return this->nbElem;
-        }
+       
         virtual Matrice<T>* subMat(int i1,int i2, int j1,int j2)const =0;
         virtual Matrice<T>* SomMat(const Matrice<T> &m1)const =0;
         virtual Matrice<T>* MultMat(const Matrice<T> &m1)const =0; 
 
-        //virtual Matrice<T>* MDtoMC()const =0;
+        virtual Matrice<T>* MDtoMC()const=0;
+        virtual int estCreuse()const=0;
 
         virtual string toString() const =0;
         friend ostream& operator <<(ostream &f, const Matrice<T> &m)
@@ -64,6 +52,8 @@ class Matrice{
             this->nbL=m.nbL;
             return *this->Matrice<T>(m);
         }*/
+
+       
 
        
 }; 

@@ -3,7 +3,7 @@
 #include <cstring>
 #include <sstream>
 #include "matrice.hpp"
-#include"matriceDouble.hpp"
+
 #include "matriceDouble.cpp"
 #include "matriceCreuse.hpp"
 
