@@ -1,5 +1,5 @@
 #pragma once
-
+#include<sstream>
 
 using namespace std;
 
@@ -42,6 +42,8 @@ class Matrice{
         virtual Matrice<T>* SomMat(const Matrice<T> &m1)const =0;
         virtual Matrice<T>* MultMat(const Matrice<T> &m1)const =0; 
 
+        //virtual Matrice<T>* MDtoMC()const =0;
+
         virtual string toString() const =0;
         friend ostream& operator <<(ostream &f, const Matrice<T> &m)
         {
@@ -62,4 +64,6 @@ class Matrice{
             this->nbL=m.nbL;
             return *this->Matrice<T>(m);
         }*/
+
+       
 }; 

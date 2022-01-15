@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/saide/Matrice'
+g++  -o MATRICE main.cpp matriceDouble.cpp -lm   #MATRICE la cible main.cpp matriceDouble.cpptoutes les d ́ependances        
+make: Leaving directory '/home/saide/Matrice'
+ 
