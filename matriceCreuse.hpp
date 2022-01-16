@@ -18,9 +18,7 @@ class matriceCreuse : public Matrice<double>
 
         matriceCreuse(const matriceCreuse &MyMc);
 
-        virtual ~matriceCreuse(){
-            delete this->mc;
-        };
+        virtual ~matriceCreuse();
         //accesseurs
         virtual int getAncienL();
 
@@ -44,11 +42,11 @@ class matriceCreuse : public Matrice<double>
 
 
 
-        virtual Matrice<double>* MDtoMC()const override;
+        virtual Matrice<double>* MDtoMC()const override ;
         virtual int estCreuse()const override;
 
 
-        virtual Matrice<double>* MCtoMD()const override;
+       virtual Matrice<double>* MCtoMD()const override ;
 
        /*
 

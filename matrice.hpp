@@ -39,11 +39,11 @@ class Matrice{
             return this->nbElem;
         }
         
-        //méthode get : retourne l'élément T contenu en (i,j) 
+        //methode get : retourne l'element T contenu en (i,j) 
         virtual T get(const int i, const int j)const=0;
-        //méthode set : affecte l'élément T en (i,j)
+        //methode set : affecte l'element T en (i,j)
         virtual void set(const T &x, int i, int j)=0;
-       //re-déclaration des fonction des classes filles pour qu'elles soient bien défini
+       //re-declaration des fonction des classes filles pour qu'elles soient bien defini
         virtual Matrice<T>* subMat(int i1,int i2, int j1,int j2)const =0;
         virtual Matrice<T>* SomMat(const Matrice<T> &m1)const =0;
         virtual Matrice<T>* MultMat(const Matrice<T> &m1)const =0; 
@@ -53,17 +53,17 @@ class Matrice{
 
         
         virtual string toString() const =0;
-        //surcharge de l'opérateur << pour permettre l'écriture de matrice
+        //surcharge de l'operateur << pour permettre l'ecriture de matrice
         friend ostream& operator <<(ostream &f, const Matrice<T> &m)
         {
             return f << m.toString();
         }
-        //surcharge de l'opérateur + pour l'addition de matrices
+        //surcharge de l'operateur + pour l'addition de matrices
         virtual Matrice<T> &operator +(const Matrice<T> &m)
         {
             return *this->SomMat(m);
         }
-        //surcharge de l'opérateur * pour la multiplication de matrices
+        //surcharge de l'operateur * pour la multiplication de matrices
         virtual Matrice<T> &operator *(const Matrice<T> &m)
         {
             return *this->MultMat(m);

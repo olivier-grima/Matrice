@@ -7,6 +7,32 @@
 
 using namespace std;
 
+matriceDouble::matriceDouble(const int i,const int j, double v=0.0):Matrice<double>(i,j)
+{
+    this->mat = new double [this->nbElem];
+
+    for(int i=0;i<this->nbElem;i++)
+    {
+        this->mat[i]=v;
+    }
+}
+
+matriceDouble::matriceDouble(const matriceDouble &md):Matrice<double>(md)
+{ 
+    this->mat = new double [this->nbElem];
+
+    for(int i=0;i<this->nbElem;i++)
+    {
+        md.mat[i]=this->mat[i];               
+    }
+
+}
+
+//destructeur virtuel -> on supprime la matrice
+matriceDouble::~matriceDouble()
+{
+    delete this->mat;
+}
 
 double matriceDouble::get(const int i, const int j)const 
 {
@@ -23,6 +49,7 @@ void matriceDouble::set(const double &x,const int i, const int j)
     this->mat[i*this->nbC+j]=x;
     
 }
+
 string matriceDouble::toString() const 
 {
     ostringstream os;
@@ -37,6 +64,8 @@ string matriceDouble::toString() const
 
     return os.str();
 }
+
+//permet de rogner une matrice, si les indices donnes sont valides
 Matrice<double>* matriceDouble::subMat(int i1,int i2, int j1,int j2)const 
 {
     
@@ -65,7 +94,7 @@ Matrice<double>* matriceDouble::subMat(int i1,int i2, int j1,int j2)const
 
     return m;
 }
-
+//permet l'addition de 2 matrices, si elles ont la meme taille
 Matrice<double>* matriceDouble::SomMat(const Matrice<double> &m1)const 
 {
 
@@ -81,7 +110,7 @@ Matrice<double>* matriceDouble::SomMat(const Matrice<double> &m1)const
     }
     return m;
 }
-
+//permet la multiplication de 2 matrice, si elles sont compatibles
 Matrice<double>* matriceDouble::MultMat(const Matrice<double> &m1)const 
 {   
     
@@ -129,6 +158,15 @@ Matrice<double>* matriceDouble::MDtoMC()const
 }
 
 
+Matrice<double>* matriceDouble::MCtoMD()const
+{
+     matriceDouble *m = new matriceDouble(1,1,0);
+     return m;
+
+}
+
+
+
 
 int matriceDouble::estCreuse()const 
 {
@@ -154,20 +192,4 @@ int matriceDouble::estCreuse()const
 }
 
 
-
-Matrice<double>* matriceDouble::MCtoMD()const
-{
-     matriceDouble *m = new matriceDouble(1,1,0);
-     return m;
-
-}
-
-/*Matrice<double>* matriceDouble::MDtoMC()const
-{
-     matriceDouble *m = new matriceDouble(1,1,0);
-     cout<<"salt<"<<endl;
-     return m;
-
-}
-*/
 
