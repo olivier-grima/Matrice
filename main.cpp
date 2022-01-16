@@ -27,7 +27,20 @@ int main(){
 
     matriceDouble m6(10,10,0);
 
+    cout<<"Matrice m1"<<endl;
+    cout<<m1<<endl;
 
+    cout<<"Matrice m2"<<endl;
+    cout<<m2<<endl;
+
+    cout<<"Matrice m3"<<endl;
+    cout<<m3<<endl;
+
+    cout<<"Matrice m4"<<endl;
+    cout<<m4<<endl;
+
+    cout<<"Matrice m5"<<endl;
+    cout<<m5<<endl;
 
 
 //--------------------------SOMME--------------------------//
@@ -234,7 +247,7 @@ int main(){
     catch(const TailleInvalide& e){cerr<<e.what()<<endl;}
     catch(const InvalideCreuse& e){cerr<<e.what()<<endl;}
 
-    
+
     cout<<"FIN DU PROGRAMME"<<endl;
     return EXIT_SUCCESS;
 }
