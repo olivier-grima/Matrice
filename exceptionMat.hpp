@@ -5,7 +5,7 @@
 using namespace std;
 
 
-
+//class permetant de gérer les erreur d'incides donnée en paramètre des méthodes
 class IndexInvalide : public exception
 {
     private:
@@ -23,6 +23,7 @@ class IndexInvalide : public exception
 
 };
 
+//class permetant de gérer les erreur lié à la taille des matrices où l'on souhaite faire des opérations
 class TailleInvalide :public exception
 {
     private:
@@ -39,7 +40,8 @@ class TailleInvalide :public exception
         }
 };
 
-
+//class permetant de gérer les erreur lié à une matrice creuse 
+//impossible de convertir une matrice en matrice creuse si elle comporte 50% délément non nul par exempel
 class InvalideCreuse :public exception
 {
     private:

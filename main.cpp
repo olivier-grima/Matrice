@@ -25,7 +25,8 @@ int main(){
     //matrice pouvant être additionnée avec m3 mais pas m4
     matriceDouble m5(3,2,8);
 
-    matriceDouble TEST(10,10,0);
+    matriceDouble m6(10,10,0);
+
 
 
 
@@ -175,95 +176,65 @@ int main(){
 
 
 
-    try 
-    {
-         /* Matrice<double> *m3 = m1.subMat(0,1,0,1);
-        cout<<"somme m1 m2"<<endl;
-        cout<<"m1"<<endl;
-        cout<<m1<<endl;
-        cout<<"m2"<<endl;
-        cout<<m2<<endl;
-        cout<<"m3"<<endl;
-        cout<<*m3<<endl;
-        cout<<"m4"<<endl;
-        cout<<m4<<endl;
+//----------------------MATRICE CREUSE----------------------//
 
+    cout<<"----------------------MATRICE CREUSE----------------------"<<endl<<endl;
 
-        cout<<"m1+m2"<<endl;
-        cout<<m1+m2<<endl;
+    try{
+        for(int i=0; i<5; i++){
+            for(int j=0; j<5; j++){
+                m1.set(0,i,j);
+            }
+        }
+        cout<<"Nouvelle matrice m1"<<endl;
+        cout<<m1<<endl; 
 
-        
-        
-        cout<<"m1*m4"<<endl;
-        cout<<m1*m4<<endl;
-        
-
-        cout<<"sub de m1 (m3)"<<endl;
-        cout<<*m3<<endl;
-
-        TEST.set(3,1,1);
-        TEST.set(3,0,1);
-
-        cout<<TEST<<endl;
-        
-        
-        if(TEST.estCreuse()==1)
-            cout<<"La matrice est creuse"<<endl;
+        if(m1.estCreuse()==1)
+            cout<<"La matrice m1 est creuse"<<endl<<endl;
         else
-            cout<<"La matrice n'est pas creuse"<<endl;
+            cout<<"La matrice m1 n'est pas creuse"<<endl<<endl;
 
-        TEST.MDtoMC();
-        cout<<TEST<<endl;*/
-        
-        cout<<"Matrice TEST :"<<endl;
-        cout<<TEST<<endl; 
-        //TEST.set(3,1,1);
-        //TEST.set(3,2,2);
-        TEST.set(3,3,3);
-        if(TEST.estCreuse()==1)
-            cout<<"La matrice est creuse"<<endl;
+        cout<<"m1.MDtoMC mD2 :"<<endl;
+        Matrice<double> *mDOUBLE3 = m1.MDtoMC();
+        cout<<*mDOUBLE3<<endl;
+
+    }
+    catch(const IndexInvalide& e){cerr<<e.what()<<endl<<endl;}
+    catch(const InvalideCreuse& e){cerr<<e.what()<<endl<<endl;}
+    
+
+    try{
+        cout<<"Matrice m6 :"<<endl;
+        cout<<m6<<endl; 
+        if(m6.estCreuse()==1)
+            cout<<"La matrice est creuse"<<endl<<endl;
         else
-            cout<<"La matrice n'est pas creuse"<<endl;
-        
-        cout<<"TEST apres set de 3 en 1,1 "<<endl;
-        cout<<TEST<<endl;
-        cout<<"subMat de TEST"<<endl;
-        Matrice<double> *mDOUBLE1 = TEST.subMat(1,3,1,3);
+            cout<<"La matrice n'est pas creuse"<<endl<<endl;
+        m6.set(3,3,3);
+        m6.set(3,5,7);
+        m6.set(3,3,1);
+        cout<<"m6 apres set de 3 en (3,1),(3,3) et (5,7) "<<endl;
+        cout<<m6<<endl;
+        if(m6.estCreuse()==1)
+            cout<<"La matrice est creuse"<<endl<<endl;
+        else
+            cout<<"La matrice n'est pas creuse"<<endl<<endl;
+        cout<<"subMat de m6"<<endl;
+        Matrice<double> *mDOUBLE1 = m6.subMat(1,3,1,3);
         cout<<*mDOUBLE1<<endl;
 
-        cout<<"TEST.MDtoMC mD2 :"<<endl;
-        Matrice<double> *mDOUBLE2 = TEST.MDtoMC();
+        cout<<"m6.MDtoMC mD2 :"<<endl;
+        Matrice<double> *mDOUBLE2 = m6.MDtoMC();
         cout<<*mDOUBLE2<<endl;
 
-        cout<<"TEST.MCtoMD"<<endl;
-        cout<<*mDOUBLE2->MCtoMD()<<endl;
-       
-
-
-                
+        cout<<"m6.MCtoMD"<<endl;
+        cout<<*mDOUBLE2->MCtoMD()<<endl;           
     }
     catch(const IndexInvalide& e){cerr<<e.what()<<endl;}
     catch(const TailleInvalide& e){cerr<<e.what()<<endl;}
     catch(const InvalideCreuse& e){cerr<<e.what()<<endl;}
 
-    //SOMME DE 2 MATRICES : CAS FONCTIONNEL
-    try{
-        cout<<"m1+m2"<<endl;
-        cout<<m1+m2<<endl;
-    }
-    catch(const IndexInvalide& e){cerr<<e.what()<<endl;}
-    catch(const TailleInvalide& e){cerr<<e.what()<<endl;}
-
-
-    //SOMME DE 2 MATRICES : CAS ERREUR
-    try{
-        cout<<"m1+m2"<<endl;
-        cout<<m1+m3<<endl;
-        //erreur les 2 matrices ne sont pas de la meme taille
-    }
-    catch(const IndexInvalide& e){cerr<<e.what()<<endl;}
-    catch(const TailleInvalide& e){cerr<<e.what()<<endl;}
     
-   cout<<"FIN DU MAIN"<<endl;
+    cout<<"FIN DU PROGRAMME"<<endl;
     return EXIT_SUCCESS;
 }
