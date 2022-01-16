@@ -4,9 +4,9 @@
 #include <sstream>
 #include "matrice.hpp"
 
-#include "matriceDouble.cpp"
+#include "matriceDouble.hpp"
 #include "matriceCreuse.hpp"
-
+#include "exceptionMat.hpp"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ int main(){
     matriceDouble m3(3,2,6);
     matriceDouble m4(2,3,2);
 
-    matriceDouble TEST(10,10);
+    matriceDouble TEST(10,10,0);
     
     
     try 
@@ -88,8 +88,8 @@ int main(){
         cout<<*mDOUBLE2<<endl;
 
         cout<<"TEST.MCtoMD"<<endl;
-        Matrice<double> *mDOUBLE3 = mDOUBLE2->MCtoMD();
-        cout<<*mDOUBLE3<<endl;
+        //Matrice<double> *mDOUBLE3 = mDOUBLE2->MCtoMD();
+       // cout<<*mDOUBLE3<<endl;
 
 
                 
