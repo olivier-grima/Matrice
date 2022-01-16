@@ -144,17 +144,13 @@ Matrice<double>* matriceDouble::MDtoMC()const
     {
         for(int j=0;j<this->nbC;j++)
         {
-            //cout<<"i:"<<i<<" j : "<<j<<endl;
+
             if(this->get(i,j)!=0)
             {
                 
                 mc->set(this->get(i,j),cpti,0);
                 mc->set(i,cpti,1);
                 mc->set(j,cpti,2);
-               /* cout<<this->get(i,j)<<endl;
-                mc->set(this->get(i,j),0,cptj);
-                mc->set(i,1,cptj);
-                mc->set(j,2,cptj);*/
                cpti++;
             }
                 

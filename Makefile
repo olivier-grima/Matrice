@@ -1,7 +1,7 @@
 CC = g++ # le compilateur `a utiliser                                           
 CFLAGS = -Wall -std=c++17 # les options du compilateur                               
 LDFLAGS = -lm  # les options pour l editeur de liens                           
-SRC = matrice.cpp matriceDouble.cpp matriceCreuse.cpp main.cpp   # les fichiers sources                         
+SRC = matriceDouble.cpp matriceCreuse.cpp main.cpp   # les fichiers sources                         
 PROG = MATRICE  # nom de l executable                                         
 OBJS =  $(SRC:.c=.o) # les .o qui en decoulent                                 
 .SUFFIXES: .c .o    # lien entre les suffixes                                   

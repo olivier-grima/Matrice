@@ -70,15 +70,4 @@ class Matrice{
             return *this->MultMat(m);
         }
         
-        /*virtual Matrice<T> &operator =(const Matrice<T> &m)
-        {
-            this->nbElem=m.nbElem;
-            this->nbC=m.nbC;
-            this->nbL=m.nbL;
-            return *this->Matrice<T>(m);
-        }*/
-
-       
-
-       
 }; 

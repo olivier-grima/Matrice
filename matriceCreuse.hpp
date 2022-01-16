@@ -7,7 +7,6 @@ class matriceCreuse : public Matrice<double>
 {
     protected :
         double *mc;
-        double nbNonNul;
         int ancienNbL,ancienNbC;
         
     

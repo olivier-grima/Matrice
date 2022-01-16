@@ -152,7 +152,7 @@ int main(){
 
     //subdivision d'une matrice : CAS ERREUR
     try{
-        cout<<"subMat de m1"<<endl;
+        cout<<"subMat de m1 avec i1=-5, i2=7 j1=4 et j2=7"<<endl;
         Matrice<double> *mDOUBLE1 = m1.subMat(-5,7,10,7);
         cout<<*mDOUBLE1<<endl;
     }
@@ -160,7 +160,7 @@ int main(){
 
     //subdivision d'une matrice : CAS ERREUR
     try{
-        cout<<"subMat de m1"<<endl;
+        cout<<"subMat de m1 avec i1=4, i2=7 j1=4 et j2=10"<<endl;
         Matrice<double> *mDOUBLE1 = m1.subMat(4,7,4,10);
         cout<<*mDOUBLE1<<endl;
     }
@@ -168,7 +168,7 @@ int main(){
 
     //subdivision d'une matrice : CAS FONCTIONNEL
     try{
-        cout<<"subMat de m1"<<endl;
+        cout<<"subMat de m1 avec i1=4, i2=7 j1=4 et j2=7"<<endl;
         Matrice<double> *mDOUBLE1 = m1.subMat(4,7,4,7);
         cout<<*mDOUBLE1<<endl;
     }
