@@ -24,17 +24,17 @@ class Matrice{
         virtual ~Matrice(){};
 
         //accesseurs
-        int getNbL()const
+        virtual int getNbL()const
         {
             return this->nbL;
         }
 
-        int getNbC()const
+        virtual int getNbC()const
         {
             return this->nbC;
         }
 
-        int getNbElem()const
+        virtual int getNbElem()const
         {
             return this->nbElem;
         }
@@ -50,6 +50,7 @@ class Matrice{
         virtual Matrice<T>* MDtoMC()const=0;
         virtual Matrice<T>* MCtoMD()const=0;
         virtual int estCreuse()const=0;
+        virtual int NbrElementNN()const=0;
 
         
         virtual string toString() const =0;

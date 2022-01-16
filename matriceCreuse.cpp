@@ -5,7 +5,7 @@
 using namespace std;
 
 
-matriceCreuse::matriceCreuse(const int j):Matrice<double>(3,j)
+matriceCreuse::matriceCreuse(const int i,const int j):Matrice<double>(i,j)
 {
     this->mc = new double [this->nbElem];
 }
@@ -67,14 +67,17 @@ Matrice<double>* matriceCreuse::MCtoMD()const
 {
     //céation d'une matrice double de 0 de taille ancienNbL * ancienNbC
     matriceDouble *m= new matriceDouble(this->ancienNbL,this->ancienNbC,0); 
-    for (int j = 0; j <this->nbC; j++)
-        m->set(this->get(0,j),this->get(1,j),this->get(2,j)); //on restaure les valeurs aux coordonées i,j contenu dans la MC
+    
+    for(int i=0;i<this->nbL;i++)
+    {
+        m->set(this->get(i,0),this->get(i,1),this->get(i,2));//on restaure les valeurs aux coordonées i,j contenu dans la MC
+    }
     return m;
 }
 
 Matrice<double>* matriceCreuse::MDtoMC()const
 {
-     matriceCreuse *m = new matriceCreuse(1);
+     matriceCreuse *m = new matriceCreuse(1,1);
      return m;
 
 }
@@ -85,24 +88,35 @@ Matrice<double>* matriceCreuse::MDtoMC()const
 
 
 Matrice<double>* matriceCreuse::subMat(int i1,int i2, int j1,int j2)const{
-    matriceCreuse *m = new matriceCreuse(1);
+    matriceCreuse *m = new matriceCreuse(1,1);
      return m;
 }
 Matrice<double>* matriceCreuse::SomMat(const Matrice<double> &m1)const 
 {
-    matriceCreuse *m = new matriceCreuse(1);
+    matriceCreuse *m = new matriceCreuse(1,1);
      return m;
 }
 Matrice<double>* matriceCreuse::MultMat(const Matrice<double> &m1)const 
 {
-    matriceCreuse *m = new matriceCreuse(1);
+    matriceCreuse *m = new matriceCreuse(1,1);
      return m;
 }
 
 string matriceCreuse::toString() const 
 {
-    string s;
-    return s;
+    
+    ostringstream os;
+    for(int i=0;i<this->NbrElementNN();i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            os<< "("<<this->mc[i*3+j]<<")";
+            
+        }
+        os<<"\n";
+    }
+
+    return os.str();
 }
 
 int matriceCreuse::estCreuse()const
@@ -111,24 +125,14 @@ int matriceCreuse::estCreuse()const
 }
 
 
-/*
-virtual int NbrElementNN()
+int matriceCreuse::NbrElementNN()const
 {
-    int cpt;
-    for(int i=0;i<this->getL();i++)
-    {
-        for(int j=0;j<this->getC();j++)
-        {
-            if(this->get(i,j)!=0)
-                cpt++;
-        }
-    }
-    this->nbNonNul=cpt;
-    return cpt;
+       
+    return this->nbElem/3;
 }
 
         
-*/
+
 
 
 

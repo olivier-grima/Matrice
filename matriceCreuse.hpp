@@ -14,7 +14,7 @@ class matriceCreuse : public Matrice<double>
       
 
     public :
-        matriceCreuse(const int j);
+        matriceCreuse(const int i,const int j);
 
         matriceCreuse(const matriceCreuse &MyMc);
 
@@ -46,27 +46,9 @@ class matriceCreuse : public Matrice<double>
         virtual int estCreuse()const override;
 
 
-       virtual Matrice<double>* MCtoMD()const override ;
-
-       /*
-
+        virtual Matrice<double>* MCtoMD()const override ;
         
-        virtual int NbrElementNN()
-        {
-            int cpt;
-            for(int i=0;i<this->getL();i++)
-            {
-                for(int j=0;j<this->getC();j++)
-                {
-                    if(this->get(i,j)!=0)
-                        cpt++;
-                }
-            }
-            this->nbNonNul=cpt;
-            return cpt;
-        }
-
-              
-       */
+        virtual int NbrElementNN()const override;
+      
     
 };

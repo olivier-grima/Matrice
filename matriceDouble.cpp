@@ -135,25 +135,32 @@ Matrice<double>* matriceDouble::MDtoMC()const
 {
     if(!this->estCreuse())
         throw InvalideCreuse ("Votre matrice n'est pas \"creuse\", conversion impossible !");
-    matriceCreuse *mc = new matriceCreuse(this->nbElem);
-    
-    int cptj=0;
+    matriceCreuse *mc = new matriceCreuse(this->NbrElementNN(),3);
+    int cpti=0;
     mc->setAncienL(this->nbL);
     mc->setAncienC(this->nbC);
+    
     for(int i=0;i<this->nbL;i++)
     {
         for(int j=0;j<this->nbC;j++)
         {
+            //cout<<"i:"<<i<<" j : "<<j<<endl;
             if(this->get(i,j)!=0)
             {
+                
+                mc->set(this->get(i,j),cpti,0);
+                mc->set(i,cpti,1);
+                mc->set(j,cpti,2);
+               /* cout<<this->get(i,j)<<endl;
                 mc->set(this->get(i,j),0,cptj);
                 mc->set(i,1,cptj);
-                mc->set(j,2,cptj);
-                cptj++;
+                mc->set(j,2,cptj);*/
+               cpti++;
             }
                 
         }
     }
+    
     return mc;
 }
 
@@ -191,5 +198,20 @@ int matriceDouble::estCreuse()const
 
 }
 
+int matriceDouble::NbrElementNN()const
+{
+    int cpt=0;
+    for(int i=0;i<this->getNbL();i++)
+    {
+        for(int j=0;j<this->getNbC();j++)
+        {
+            if(this->get(i,j)!=0)
+                cpt++;
+        }
+    }
+    
+    return cpt;
+
+}
 
 
