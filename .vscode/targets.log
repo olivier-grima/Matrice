@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jan 16 09:33:32 2022
+# Make data base, printed on Sun Jan 16 10:55:16 2022
 
 # Variables
 
@@ -163,7 +163,7 @@ CC = g++
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-71205ee5-65c0-4275-b325-d55e50601bc2.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c4355bf0-5320-41a9-a365-c0264e85d474.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -229,7 +229,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2017
+VSCODE_PID = 10798
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=17/144=12%
 
@@ -326,7 +326,7 @@ matriCreuse.hpp:
 # Not a target:
 main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-15 18:38:16.544015809
+#  Last modified 2022-01-16 10:20:13.79456954
 #  File has been updated.
 #  Successfully updated.
 
@@ -345,7 +345,7 @@ main.cpp:
 # Not a target:
 matriceDouble.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-15 18:52:42.91322212
+#  Last modified 2022-01-16 10:34:13.998759924
 #  File has been updated.
 #  Successfully updated.
 
@@ -374,12 +374,12 @@ matrice.hpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 34 / storage = 380 B / avg = 11 B
-# current buf: size = 8162 B / used = 380 B / count = 34 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 34 / storage = 379 B / avg = 11 B
+# current buf: size = 8162 B / used = 379 B / count = 34 / avg = 11 B
 
 # strcache performance: lookups = 53 / hit rate = 35%
 # hash-table stats:
 # Load=34/8192=0%, Rehash=0, Collisions=4/53=8%
-# Finished Make data base on Sun Jan 16 09:33:32 2022
+# Finished Make data base on Sun Jan 16 10:55:16 2022
 
  

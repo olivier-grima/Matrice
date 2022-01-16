@@ -1,11 +1,37 @@
 #include "matriceDouble.hpp"
 #include "matriceCreuse.hpp"
-#include "exception_mat.hpp"
+#include "exceptionMat.hpp"
 #include <sstream>
 
 
 
 using namespace std;
+
+matriceDouble::matriceDouble(const int i,const int j, double v=0.0):Matrice<double>(i,j)
+{
+    this->mat = new double [this->nbElem];
+
+    for(int i=0;i<this->nbElem;i++)
+    {
+        this->mat[i]=v;
+    }
+}
+ matriceDouble::matriceDouble(const matriceDouble &md):Matrice<double>(md)
+{ 
+        this->mat = new double [this->nbElem];
+
+    for(int i=0;i<this->nbElem;i++)
+    {
+        md.mat[i]=this->mat[i];               
+    }
+
+}
+
+matriceDouble::~matriceDouble()
+{
+    delete this->mat;
+}
+
 
 
 double matriceDouble::get(const int i, const int j)const 

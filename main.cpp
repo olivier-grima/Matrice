@@ -87,6 +87,9 @@ int main(){
         Matrice<double> *mDOUBLE2 = TEST.MDtoMC();
         cout<<*mDOUBLE2<<endl;
 
+        cout<<"TEST.MCtoMD"<<endl;
+        Matrice<double> *mDOUBLE3 = mDOUBLE2->MCtoMD();
+        cout<<*mDOUBLE3<<endl;
 
 
                 

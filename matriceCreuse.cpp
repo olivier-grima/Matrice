@@ -1,7 +1,8 @@
 
-#include "exception_mat.hpp"
+#include "exceptionMat.hpp"
 #include"matriceDouble.hpp"
 #include "matriceCreuse.hpp"
+using namespace std;
 
 
 matriceCreuse::matriceCreuse(const int j):Matrice<double>(3,j)

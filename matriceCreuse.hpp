@@ -1,6 +1,6 @@
 #pragma once
 #include "matrice.hpp"
-#include "exception_mat.hpp"
+
 
 class matriceDouble;
 class matriceCreuse : public Matrice<double>
