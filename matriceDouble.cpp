@@ -169,11 +169,9 @@ Matrice<double>* matriceDouble::MCtoMD()const
 }
 
 
-
-
+//méthode déterminant si la matrice est creuse ou non
 int matriceDouble::estCreuse()const 
-{
-    
+{ 
     double cpt=0;
 
     for(int i=0;i<this->nbL;i++)
@@ -189,11 +187,10 @@ int matriceDouble::estCreuse()const
     if((cpt/this->nbElem)*100>=90)
         return 1;//la matrice est creuse
     
-    return 0;//la matrice n'est pas creuse
-        
-
+    return 0;//la matrice n'est pas creuse    
 }
 
+//methode déterminant le nombre d'élément non nuls
 int matriceDouble::NbrElementNN()const
 {
     int cpt=0;
@@ -205,9 +202,5 @@ int matriceDouble::NbrElementNN()const
                 cpt++;
         }
     }
-    
     return cpt;
-
 }
-
-
