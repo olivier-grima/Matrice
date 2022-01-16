@@ -1,14 +1,11 @@
 #include "matriceDouble.hpp"
 #include "matriceCreuse.hpp"
-
+#include "exception_mat.hpp"
 #include <sstream>
 
 
 
 using namespace std;
-
-
-
 
 
 double matriceDouble::get(const int i, const int j)const 
@@ -72,12 +69,12 @@ Matrice<double>* matriceDouble::subMat(int i1,int i2, int j1,int j2)const
 Matrice<double>* matriceDouble::SomMat(const Matrice<double> &m1)const 
 {
 
-    if(this->nbC!=nbC || this->nbL!=nbL)
+    if(this->nbC!=m1.getNbC() || this->nbL!=m1.getNbL())
         throw TailleInvalide("Les 2 matrices n'ont pas la même taille, somme impossible");
     matriceDouble *m = new matriceDouble(nbL,nbC);
-    for(int i=0;i<nbL;i++)
+    for(int i=0;i<m1.getNbL();i++)
     {
-        for(int j=0;j<nbC;j++)
+        for(int j=0;j<m1.getNbC();j++)
         {
             m->set(this->get(i,j)+m1.get(i,j),i,j);
         }
@@ -86,13 +83,14 @@ Matrice<double>* matriceDouble::SomMat(const Matrice<double> &m1)const
 }
 
 Matrice<double>* matriceDouble::MultMat(const Matrice<double> &m1)const 
-{
-    if(this->nbC!=nbL)
+{   
+    
+    if(this->nbC!=m1.getNbL() || this->nbL!=m1.getNbC())
         throw TailleInvalide("Les 2 matrices ne sont pas compatible, multiplication impossible");
-    matriceDouble *m = new matriceDouble(this->nbL,nbC,0);
+    matriceDouble *m = new matriceDouble(this->nbL,m1.getNbC());
     for(int i=0;i<this->nbL;i++)
     {
-        for(int j=0;j<nbC;j++)
+        for(int j=0;j<m1.getNbC();j++)
         {
             for(int c=0;c<this->nbC;c++ )
             {
@@ -106,8 +104,8 @@ Matrice<double>* matriceDouble::MultMat(const Matrice<double> &m1)const
 }
 Matrice<double>* matriceDouble::MDtoMC()const 
 {
-        if(!this->estCreuse())
-            throw InvalideCreuse ("Votre matrice n'est pas \"creuse\", conversion impossible !");
+    if(!this->estCreuse())
+        throw InvalideCreuse ("Votre matrice n'est pas \"creuse\", conversion impossible !");
     matriceCreuse *mc = new matriceCreuse(this->nbElem);
     
     int cptj=0;
@@ -129,6 +127,8 @@ Matrice<double>* matriceDouble::MDtoMC()const
     }
     return mc;
 }
+
+
 
 int matriceDouble::estCreuse()const 
 {
@@ -155,5 +155,19 @@ int matriceDouble::estCreuse()const
 
 
 
+Matrice<double>* matriceDouble::MCtoMD()const
+{
+     matriceDouble *m = new matriceDouble(1,1,0);
+     return m;
 
+}
+
+/*Matrice<double>* matriceDouble::MDtoMC()const
+{
+     matriceDouble *m = new matriceDouble(1,1,0);
+     cout<<"salt<"<<endl;
+     return m;
+
+}
+*/
 

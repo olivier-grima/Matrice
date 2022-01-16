@@ -1,6 +1,7 @@
 #pragma once
 #include "matrice.hpp"
-#include "exception_mat.hpp"
+
+//#include "matriceCreuse.hpp"
 
 
 using namespace std;
@@ -45,7 +46,7 @@ class matriceDouble:public Matrice <double>
         
         virtual void set(const double &x,const int i, const int j) override;
 
-        virtual string toString() const ;
+        virtual string toString() const override;
         
         virtual Matrice<double>* subMat(int i1,int i2, int j1,int j2)const override;
         
@@ -54,11 +55,12 @@ class matriceDouble:public Matrice <double>
         virtual Matrice<double>* MultMat(const Matrice<double> &m1)const override;
 
         virtual Matrice<double>* MDtoMC()const override;
-        
+        virtual Matrice<double>* MCtoMD()const override;
        
-        virtual int estCreuse()const override;
+        virtual int estCreuse()const ;
 
-        /*friend Matrice<double> operator =(const Matrice<double> &m)
+
+                /*friend Matrice<double> operator =(const Matrice<double> &m)
         {
             this->nbElem=m.nbElem;
             this->nbC=m.nbC;

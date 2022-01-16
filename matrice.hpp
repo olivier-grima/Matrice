@@ -22,6 +22,21 @@ class Matrice{
         }
         //destructeur virtual
         virtual ~Matrice(){};
+        int getNbL()const
+        {
+            return this->nbL;
+        }
+
+        int getNbC()const
+        {
+            return this->nbC;
+        }
+
+        int getNbElem()const
+        {
+            return this->nbElem;
+        }
+
         virtual T get(const int i, const int j)const=0;
         virtual void set(const T &x, int i, int j)=0;
        
@@ -30,6 +45,7 @@ class Matrice{
         virtual Matrice<T>* MultMat(const Matrice<T> &m1)const =0; 
 
         virtual Matrice<T>* MDtoMC()const=0;
+        virtual Matrice<T>* MCtoMD()const=0;
         virtual int estCreuse()const=0;
 
         virtual string toString() const =0;

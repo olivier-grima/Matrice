@@ -15,15 +15,18 @@ int main(){
     cout << "Hello World" << endl;
     cout << "execution main" << endl;
      
-    matriceDouble m1(2,3,3);
-    matriceDouble m2(2,3,2);
-    matriceDouble m4(3,2,6);
-    matriceDouble TEST(2,5);
+    matriceDouble m1(10,10,4);
+    matriceDouble m2(10,10,1);
+
+    matriceDouble m3(3,2,6);
+    matriceDouble m4(2,3,2);
+
+    matriceDouble TEST(10,10);
     
     
     try 
     {
-        Matrice<double> *m3 = m1.subMat(0,1,0,1);
+         /* Matrice<double> *m3 = m1.subMat(0,1,0,1);
         cout<<"somme m1 m2"<<endl;
         cout<<"m1"<<endl;
         cout<<m1<<endl;
@@ -48,17 +51,45 @@ int main(){
         cout<<*m3<<endl;
 
         TEST.set(3,1,1);
-        //TEST.set(3,0,1);
+        TEST.set(3,0,1);
 
         cout<<TEST<<endl;
         
         
-       if(TEST.estCreuse()==1)
+        if(TEST.estCreuse()==1)
             cout<<"La matrice est creuse"<<endl;
         else
             cout<<"La matrice n'est pas creuse"<<endl;
 
-     
+        TEST.MDtoMC();
+        cout<<TEST<<endl;*/
+        cout<<"m1+m2 :"<<endl;
+        cout<<m1+m2<<endl;
+
+        cout<<"m3*m4 :"<<endl;
+        cout<<m3*m4<<endl;
+
+        cout<<"Matrice TEST :"<<endl;
+        cout<<TEST<<endl; 
+        TEST.set(3,1,1);
+        if(TEST.estCreuse()==1)
+            cout<<"La matrice est creuse"<<endl;
+        else
+            cout<<"La matrice n'est pas creuse"<<endl;
+        
+        cout<<"TEST apres set de 3 en 1,1 "<<endl;
+        cout<<TEST<<endl;
+        cout<<"subMat de TEST"<<endl;
+        Matrice<double> *mDOUBLE1 = TEST.subMat(1,3,1,3);
+        cout<<*mDOUBLE1<<endl;
+
+        cout<<"TEST.MDtoMC"<<endl;
+        Matrice<double> *mDOUBLE2 = TEST.MDtoMC();
+        cout<<*mDOUBLE2<<endl;
+
+
+
+                
     }
     catch(const IndexInvalide& e){cerr<<e.what()<<endl;}
     catch(const TailleInvalide& e){cerr<<e.what()<<endl;}
