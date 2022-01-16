@@ -37,7 +37,7 @@ class matriceCreuse : public Matrice<double>
         virtual Matrice<double>* SomMat(const Matrice<double> &m1)const override;
         virtual Matrice<double>* MultMat(const Matrice<double> &m1)const override; 
 
-        virtual string toString() const override;
+        virtual std::string toString() const override;
 
 
 

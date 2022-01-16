@@ -1,5 +1,5 @@
 #pragma once
-#include<sstream>
+#include <sstream>
 
 using namespace std;
 
@@ -26,17 +26,17 @@ class Matrice{
         //accesseurs
         virtual int getNbL()const
         {
-            return this->nbL;
+            return this->nbL;//retourne le nombre de lignes de la matrice courante
         }
 
         virtual int getNbC()const
         {
-            return this->nbC;
+            return this->nbC;//retourne le nombre de colonnes de la matrice courante
         }
 
         virtual int getNbElem()const
         {
-            return this->nbElem;
+            return this->nbElem;//retourne le nombre d'éléments de la matrice courante
         }
         
         //methode get : retourne l'element T contenu en (i,j) 

@@ -30,7 +30,7 @@ class matriceDouble:public Matrice <double>
         virtual Matrice<double>* MDtoMC()const override;
         //methode de conversion d'une matriceCreuse a une matriceDouble
         virtual Matrice<double>* MCtoMD()const override;
-        //methode de test de matrice, on compte le nombre de 0, si il est superieur a 90% de la matrice, elle est creuse
-        virtual int estCreuse()const override;
-        virtual int NbrElementNN()const override;
+        //methode de test de matrice, on compte le nombre de 0, si il est superieur a 90% de la matrice est creuse
+        virtual int estCreuse()const override;//test si une matrice est creuse
+        virtual int NbrElementNN()const override;//renvoi le nombre d'elements non nul de la matrice
 };

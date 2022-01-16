@@ -7,16 +7,17 @@
 
 using namespace std;
 
+//constructeur de matriceDouble
 matriceDouble::matriceDouble(const int i,const int j, double v=0.0):Matrice<double>(i,j)
 {
     this->mat = new double [this->nbElem];
 
     for(int i=0;i<this->nbElem;i++)
     {
-        this->mat[i]=v;
+        this->mat[i]=v;//on rempli la matrice avec la valeur v
     }
 }
-
+//constructeur de copie de matriceDouble
 matriceDouble::matriceDouble(const matriceDouble &md):Matrice<double>(md)
 { 
     this->mat = new double [this->nbElem];
@@ -33,23 +34,26 @@ matriceDouble::~matriceDouble()
 {
     delete this->mat;
 }
-
+//methode get: permet de récupérer la valeur de l'element en (i,j)
 double matriceDouble::get(const int i, const int j)const 
 {
     if(i>this->nbL || i<0 || j>this->nbC || j<0)
         throw IndexInvalide ("veuillez utilser des indices valides (fonction get) !");
+    //les indices sont valides
     return this->mat[i*this->nbC+j];
     
     
 }     
+//methode set: permet d'affecter la valeur x en (i,j)
 void matriceDouble::set(const double &x,const int i, const int j) 
 {
     if(i>this->nbL || i<0 || j>this->nbC || j<0)
         throw IndexInvalide ("veuillez utilser des indices valides (fonction set) !");
+    //les indices sont valides
     this->mat[i*this->nbC+j]=x;
     
 }
-
+//ecriture d'une matrice dans un ostreamstring
 string matriceDouble::toString() const 
 {
     ostringstream os;
@@ -80,7 +84,7 @@ Matrice<double>* matriceDouble::subMat(int i1,int i2, int j1,int j2)const
         if(j2<0 || j2>=this->nbC)
             throw IndexInvalide ("erreur sur l'indice j2 (fonction subMat)");
 
-        
+        //tous les indices sont valide        
         matriceDouble *m = new matriceDouble(i2-i1+1,j2-j1+1);
         for(int i=i1;i<=i2;i++)
         {
@@ -105,7 +109,7 @@ Matrice<double>* matriceDouble::SomMat(const Matrice<double> &m1)const
     {
         for(int j=0;j<m1.getNbC();j++)
         {
-            m->set(this->get(i,j)+m1.get(i,j),i,j);
+            m->set(this->get(i,j)+m1.get(i,j),i,j);//somme des element en (i,j)
         }
     }
     return m;
@@ -131,6 +135,8 @@ Matrice<double>* matriceDouble::MultMat(const Matrice<double> &m1)const
     
     return m;
 }
+
+//conversion d'une matrice double vers une matrice creuse
 Matrice<double>* matriceDouble::MDtoMC()const 
 {
     if(!this->estCreuse())
@@ -160,7 +166,7 @@ Matrice<double>* matriceDouble::MDtoMC()const
     return mc;
 }
 
-
+//re définition car la methode est déclaré comme virtuelle pure dans matrice.hpp
 Matrice<double>* matriceDouble::MCtoMD()const
 {
      matriceDouble *m = new matriceDouble(1,1,0);
