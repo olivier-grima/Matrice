@@ -13,11 +13,33 @@ class matriceDouble:public Matrice <double>
 
     public:
         //constructeur de matriceDouble 
-        matriceDouble(const int i,const int j, double v);
+         matriceDouble(const int i,const int j, double v=0.0):Matrice<double>(i,j)
+        {
+            this->mat = new double [this->nbElem];
+        
+            for(int i=0;i<this->nbElem;i++)
+            {
+                this->mat[i]=v;
+            }
+        }
         //constructeur de copie
-        matriceDouble(const matriceDouble &md);
+        matriceDouble(const matriceDouble &md):Matrice<double>(md)
+        { 
+             this->mat = new double [this->nbElem];
+
+            for(int i=0;i<this->nbElem;i++)
+            {
+                md.mat[i]=this->mat[i];               
+            }
+
+        }
         //destructeur virtuel -> on supprime la matrice
-        virtual ~matriceDouble();
+        virtual ~matriceDouble()
+        {
+            delete this->mat;
+        }
+
+
         virtual double get(const int i, const int j)const override;
         
         virtual void set(const double &x,const int i, const int j) override;
@@ -38,6 +60,7 @@ class matriceDouble:public Matrice <double>
         virtual int estCreuse()const ;
 
 
-             
+       
+      
 
 };
